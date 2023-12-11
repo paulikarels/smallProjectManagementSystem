@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useRef } from 'react'
+import projectService from './services/projects'
+import LoginForm from './components/LoginForm'
+import Togglable from './components/Togglable'
+import ProjectForm from './components/ProjectForms'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [projects, setProjects] = useState([])
+  const [user, setUser] = useState(null)
+
+  const projectFormRef = useRef()
+
+  const projectForm = () => (
+    <Togglable buttonLabel='new project' ref={projectFormRef}>
+      <ProjectForm  setProjects={setProjects} user={user} />
+    </Togglable>
+  )
+
+  const handleLogout = async (event) => {
+    event.preventDefault()
+    window.localStorage.removeItem('loggedNoteappUser')
+    window.location.reload();
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <div >
+          {user ? (
+            <>
+              <h2>{user.user.username} logged in</h2>
+              {projectForm()}
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <LoginForm
+              setUser={setUser}
+            />
+        )}
+        </div>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+
     </>
   )
 }
