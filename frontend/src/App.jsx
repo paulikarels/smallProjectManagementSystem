@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react'
-import projectService from './services/projects'
 import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
-import ProjectForm from './components/ProjectForms'
-
+import ProjectForm from './components/Project/ProjectForms'
+import Projects from './components/Project/Projects'
 function App() {
   const [projects, setProjects] = useState([])
+  const [tasks, setTasks] = useState([])
   const [user, setUser] = useState(null)
 
   const projectFormRef = useRef()
@@ -38,7 +38,13 @@ function App() {
             />
         )}
         </div>
-
+        <Projects
+          setProjects={setProjects}
+          projects={projects}
+          setTasks={setTasks}
+          tasks={tasks}
+          user={user}
+        />
       </div>
       
 
