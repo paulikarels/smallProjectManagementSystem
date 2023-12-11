@@ -38,7 +38,7 @@ const Project = ({ project, setProjects }) => {
   const handleUpdateProject = async () => {
     try {
       const updatedProject = editedProject 
-      console.log(updatedProject)
+      //console.log(updatedProject)
       const updatedData = await projectService.update(updatedProject.projectID, updatedProject)
       setProjects(updatedData)
     } catch (error) {

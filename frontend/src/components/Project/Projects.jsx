@@ -5,6 +5,7 @@ import Togglable from '../Togglable'
 import TaskForms from '../Task/TaskForms'
 import projectService from '../../services/projects'
 import taskService from '../../services/tasks'
+import './Projects.css'
 const Projects = ({ setProjects, projects, setTasks, tasks, user}) => {
 
   const taskFormRef = useRef()

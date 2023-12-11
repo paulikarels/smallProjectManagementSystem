@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import ProjectForm from './components/Project/ProjectForms'
 import Projects from './components/Project/Projects'
+import './index.css'
 function App() {
   const [projects, setProjects] = useState([])
   const [tasks, setTasks] = useState([])
@@ -19,13 +20,13 @@ function App() {
   const handleLogout = async (event) => {
     event.preventDefault()
     window.localStorage.removeItem('loggedNoteappUser')
-    window.location.reload();
+    window.location.reload()
   }
 
   return (
     <>
-      <div>
-        <div >
+      <div className="app-container">
+        <div className="user-info">
           {user ? (
             <>
               <h2>{user.user.username} logged in</h2>

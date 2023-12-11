@@ -1,12 +1,16 @@
 import { useState  } from 'react'
 import taskService from '../../services/tasks'
 
+import '../Project/Projects.css'
 
 const Task = ({ task, setTasks }) => {
   const [editable, setEditable] = useState(false)
   const [editedTask, setEditedTask] = useState(task)
 
   const formatDate = (dateString) => {
+    if (dateString === "" || dateString === null)
+      return false
+
     const date = new Date(dateString)
     const formattedDate = date.toISOString().split('T')[0];
     return formattedDate
@@ -46,7 +50,7 @@ const Task = ({ task, setTasks }) => {
   const handleUpdateTask = async () => {
     try {
       const updatedTask = editedTask
-      console.log(updatedTask)
+      //console.log(updatedTask)
       editedTask.status = +editedTask.status
       const updatedData = await taskService.update(updatedTask.taskID, updatedTask)
 
@@ -65,7 +69,7 @@ const Task = ({ task, setTasks }) => {
           <label >Task Name:</label>
             <input
               type="text"
-              name="taskName"
+              name="taskName" required
               value={editedTask.taskName}
               onChange={handleInputChange}
             />
@@ -84,7 +88,7 @@ const Task = ({ task, setTasks }) => {
             <label >Due Date:</label>
             <input
               type="date"
-              name="dueDate"
+              name="dueDate" 
               value={formatDate(editedTask.dueDate)}
               onChange={handleInputChange}
               style={{ marginBottom: '8px' }}
@@ -94,7 +98,7 @@ const Task = ({ task, setTasks }) => {
             <label >Status:</label>
             <input
               type="number"
-              name="status"
+              name="status" required
               value={(editedTask.status)}
               min="0" max="2"
               onChange={handleInputChange}

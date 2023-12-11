@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import projectService from '../../services/projects'
-
+import './Projects.css'
 
 const ProjectForms = ({  setProjects, user  }) => {
   const [name, setName] = useState('')
