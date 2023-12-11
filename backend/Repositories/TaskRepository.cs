@@ -127,7 +127,7 @@ namespace backend.Repositories
             string query = @"UPDATE dbo.Tasks 
                                 SET TaskName = @TaskName, 
                                 TaskDescription = @TaskDescription,
-                                DueTate = @DueDate
+                                DueDate = @DueDate,
                                 Status = @Status
                                 WHERE TaskID = @TaskID;";
 
