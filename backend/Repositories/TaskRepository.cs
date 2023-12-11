@@ -127,6 +127,7 @@ namespace backend.Repositories
             string query = @"UPDATE dbo.Tasks 
                                 SET TaskName = @TaskName, 
                                 TaskDescription = @TaskDescription,
+                                DueTate = @DueDate
                                 Status = @Status
                                 WHERE TaskID = @TaskID;";
 
@@ -137,6 +138,7 @@ namespace backend.Repositories
                 {
                     myCommand.Parameters.AddWithValue("@TaskName", task.TaskName);
                     myCommand.Parameters.AddWithValue("@TaskDescription", task.TaskDescription);
+                    myCommand.Parameters.AddWithValue("@DueDate", task.DueDate);
                     myCommand.Parameters.AddWithValue("@Status", task.Status.ToString());
                     myCommand.Parameters.AddWithValue("@TaskID", task.TaskID);
 
