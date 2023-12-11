@@ -15,7 +15,10 @@ namespace backend.Models
             Username = username;
             Password = password;
         }
+        public bool CheckPassword(string password)
+        {
+            return Password == password;
+        }
 
-  
     }
 }

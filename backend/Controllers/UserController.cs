@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+
 using backend.Models;    
 using backend.Repositories;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+using backend;
 
 namespace backend.Controllers
 {
