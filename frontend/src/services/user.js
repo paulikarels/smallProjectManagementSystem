@@ -10,9 +10,13 @@ const getAll = async () => {
 }
 
 const create = async (newObject) => {
-
-  const response = await axios.post(baseUrl, newObject)
-  return response.data
+  try {
+    const response = await axios.post(baseUrl, newObject)
+    return response.data
+  } catch (error) {
+    console.log(error.response.data)
+    return false
+  }
 }
 
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import projectService from '../../services/projects'
 import './Projects.css'
 
-const ProjectForms = ({  setProjects, user  }) => {
+const ProjectForms = ({  setProjects, user, failureMessage, successMessage  }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [startDate, setStartDate] = useState('')
@@ -23,27 +23,32 @@ const ProjectForms = ({  setProjects, user  }) => {
 
   const addProject = async  (event) => {
     event.preventDefault()
-
-    const projectObject = {
-      projectName: name,
-      projectDescription: description,
-      startDate,
-      endDate,
-      userID: user.user.userID
+    try {
+      const projectObject = {
+        projectName: name,
+        projectDescription: description,
+        startDate,
+        endDate,
+        userID: user.user.userID
+      }
+      await projectService.create(projectObject)
+      const updatedProjects = await projectService.getAll()
+      
+      setProjects(updatedProjects)
+      successMessage(`Added project successfully`)
+      setName('')
+      setDescription('')
+      setStartDate('')
+      setEndDate('')
+    } catch (exception) {
+      failureMessage('Error adding project')
     }
-    await projectService.create(projectObject)
-    const updatedProjects = await projectService.getAll()
-    setProjects(updatedProjects)
-    setName('')
-    setDescription('')
-    setStartDate('')
-    setEndDate('')
   }
 
 
   return (
     <>
-    <div >
+    <div className="project-form-container">
        <form onSubmit={addProject} className="project-form">
 
           <h2>Create new project</h2>

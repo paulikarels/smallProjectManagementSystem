@@ -3,9 +3,10 @@ import userService from '../services/user'
 import projectService from '../services/projects'
 import loginService from '../services/login'
 
-const loginForm = ({ failureMessage, setUser}) => {
-  const [username, setUsername] = useState('SwaggerTest')
-  const [password, setPassword] = useState('SwaggerTest')
+const loginForm = ({ successMessage, failureMessage, setUser}) => {
+  const [username, setUsername] = useState('User')
+  const [password, setPassword] = useState('User')
+  //  const [password, setPassword] = useState('SwaggerTest')
   const [isRegistering, setIsRegistering] = useState(false)
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const loginForm = ({ failureMessage, setUser}) => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-
+    
     try {
       const user = await loginService.login({
         username, password,
@@ -30,26 +31,34 @@ const loginForm = ({ failureMessage, setUser}) => {
       )
       projectService.setToken(user.token)
       setUser(user)
-
+      successMessage(`Login successful`)
       setPassword('')
     } catch (exception) {
-      console.log('wrong username or password')
       failureMessage('wrong username or password')
+      console.log('wrong username or password')
+      //failureMessage('wrong username or password')
     }
   }
   
   const handleRegister = async (event) => {
     event.preventDefault()
+    try {
+      const userObject = {
+        Username: username,
+        Password: password
+      }
+      const user = await userService.create(userObject)
 
-    const userObject = {
-      Username: username,
-      Password: password
+      if (user === false){
+        failureMessage('User already exists or incorrect credentials')
+        return
+      } 
+      setUsername('')
+      setPassword('')
+      setIsRegistering(false)
+    } catch (ex) {
+      console.log(ex)
     }
-    await userService.create(userObject)
-
-    setUsername('')
-    setPassword('')
-    setIsRegistering(false)
   }
 
 
@@ -63,7 +72,8 @@ const loginForm = ({ failureMessage, setUser}) => {
           <div>
             <label>Username:</label>
             <input
-              type="text"
+              type="text" required minLength="3" 
+              maxLength="35"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -71,7 +81,8 @@ const loginForm = ({ failureMessage, setUser}) => {
           <div>
             <label>Password:</label>
             <input
-              type="password"
+              type="password" required minLength="3" 
+              maxLength="35"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
