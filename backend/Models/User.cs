@@ -1,4 +1,4 @@
-
+using BCrypt.Net;
 
 namespace backend.Models
 {
@@ -17,8 +17,9 @@ namespace backend.Models
         }
         public bool CheckPassword(string password)
         {
-            return Password == password;
+            return BCrypt.Net.BCrypt.Verify(password, Password);
         }
+
 
     }
 }

@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "BCrypt.Net-Core/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BCrypt.Net-Core.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/BCrypt.Net-Core.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
       "Microsoft.AspNetCore.JsonPatch/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -391,6 +404,29 @@
     }
   },
   "libraries": {
+    "BCrypt.Net-Core/1.6.0": {
+      "sha512": "hsKiHGjrnlDW05MzuzzlD9gNP8YOW2KbZ+FbvISrilsKJJ76tXKhWey6psZX5sd7DczNpSU2U6ldjPoblk8BLw==",
+      "type": "package",
+      "path": "bcrypt.net-core/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-core.1.6.0.nupkg.sha512",
+        "bcrypt.net-core.nuspec",
+        "lib/net40/BCrypt.Net-Core.dll",
+        "lib/net40/BCrypt.Net-Core.pdb",
+        "lib/net45/BCrypt.Net-Core.dll",
+        "lib/net45/BCrypt.Net-Core.pdb",
+        "lib/net451/BCrypt.Net-Core.dll",
+        "lib/net451/BCrypt.Net-Core.pdb",
+        "lib/net452/BCrypt.Net-Core.dll",
+        "lib/net452/BCrypt.Net-Core.pdb",
+        "lib/netstandard1.3/BCrypt.Net-Core.dll",
+        "lib/netstandard1.3/BCrypt.Net-Core.pdb",
+        "lib/netstandard2.0/BCrypt.Net-Core.dll",
+        "lib/netstandard2.0/BCrypt.Net-Core.pdb"
+      ]
+    },
     "Microsoft.AspNetCore.JsonPatch/8.0.0": {
       "sha512": "klQdb/9+j0u8MDjoqHEgDCPz8GRhfsbRVvZIM3glFqjs8uY7S1hS9RvKZuz8o4dS9NsEpFp4Jccd8CQuIYHK0g==",
       "type": "package",
@@ -1305,6 +1341,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "BCrypt.Net-Core >= 1.6.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "System.Data.SqlClient >= 4.8.5",
@@ -1350,6 +1387,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "BCrypt.Net-Core": {
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
             "version": "[8.0.0, )"

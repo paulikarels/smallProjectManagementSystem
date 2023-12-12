@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yHrZzOSWOAfP2AeLToTXf6SmMFaedmUnqXw5c8GB3z04dlH0n9cN7GyVjLSV0tdaj8aQ6irsqYwV4OuDySTrJg==",
+  "dgSpecHash": "7Ut7agFd2jmSdhy0N0h0tCuN8S2wnxi9xFXx8vssWkPbMHrGc5J9FG9b0lzywfcIMT26xLUf8vvfpHAduY9fZw==",
   "success": true,
   "projectFilePath": "C:\\Users\\99pat\\smallProjectManagementSystem\\backend\\backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\99pat\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\99pat\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.0\\microsoft.aspnetcore.jsonpatch.8.0.0.nupkg.sha512",
     "C:\\Users\\99pat\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.0.nupkg.sha512",
     "C:\\Users\\99pat\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

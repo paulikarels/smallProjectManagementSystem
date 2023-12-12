@@ -4,8 +4,8 @@ import projectService from '../services/projects'
 import loginService from '../services/login'
 
 const loginForm = ({ successMessage, failureMessage, setUser}) => {
-  const [username, setUsername] = useState('User')
-  const [password, setPassword] = useState('User')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   //  const [password, setPassword] = useState('SwaggerTest')
   const [isRegistering, setIsRegistering] = useState(false)
 

@@ -4,7 +4,7 @@ using backend.Models;
 using System.Data;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
-
+using BCrypt.Net;
 
 namespace backend.Repositories
 {
@@ -90,13 +90,15 @@ namespace backend.Repositories
                              VALUES (@Username, @Password)";
             try
             {
+                string hashedPassword = HashPassword(user.Password);
+
                 using (SqlConnection myCon = new SqlConnection(_connectionString))
                 {
                     myCon.Open();
                     using (SqlCommand myCommand = new SqlCommand(query, myCon))
                     {
                         myCommand.Parameters.AddWithValue("@Username", user.Username);
-                        myCommand.Parameters.AddWithValue("@Password", user.Password);
+                        myCommand.Parameters.AddWithValue("@Password", hashedPassword);
                         myCommand.ExecuteNonQuery();
                         myCon.Close();
                     }
@@ -150,6 +152,11 @@ namespace backend.Repositories
                     return rowsAffected > 0;
                 }
             }
+        }
+        private string HashPassword(string password)
+        {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            return BCrypt.Net.BCrypt.HashPassword(password, salt);
         }
 
     }
