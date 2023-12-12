@@ -10,11 +10,12 @@ const Task = ({ task, setTasks }) => {
   const formatDate = (dateString) => {
     if (dateString === "" || dateString === null)
       return false
-    console.log(dateString)
     const date = new Date(dateString)
     const formattedDate = date.toISOString().split('T')[0];
     return formattedDate
   }
+
+  const statusOptions = ['Started', 'Done', 'Cancelled']
 
   const statusEmoji = {
     0: '🟨', 
@@ -50,8 +51,8 @@ const Task = ({ task, setTasks }) => {
   const handleUpdateTask = async () => {
     try {
       const updatedTask = editedTask
-      //console.log(updatedTask)
-      editedTask.status = +editedTask.status
+
+      editedTask.status = statusOptions.indexOf(editedTask.status)
       const updatedData = await taskService.update(updatedTask.taskID, updatedTask)
 
       setTasks(updatedData)
@@ -96,14 +97,14 @@ const Task = ({ task, setTasks }) => {
           </div>
           <div>
             <label >Status:</label>
-            <input
-              type="number"
-              name="status" required
-              value={(editedTask.status)}
-              min="0" max="2"
-              onChange={handleInputChange}
-              style={{ marginBottom: '8px' }}
-            />
+            <select name="status" value={editedTask.status} onChange={handleInputChange} required>
+                <option value="">Select Status</option>
+                {statusOptions.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
           </div>
             <button onClick={handleUpdateTask}>Save</button>
             <button onClick={handleCancel}>Cancel</button>

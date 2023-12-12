@@ -36,7 +36,6 @@ const loginForm = ({ successMessage, failureMessage, setUser}) => {
     } catch (exception) {
       failureMessage('wrong username or password')
       console.log('wrong username or password')
-      //failureMessage('wrong username or password')
     }
   }
   

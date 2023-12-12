@@ -7,6 +7,12 @@ const TaskForms = ({ user, setTasks, project }) => {
   const [dueDate, setStartDate] = useState('')
   const [status, setStatus] = useState('')
 
+  const statusMap = {
+    Started: 0,
+    Done: 1,
+    Cancelled: 2,
+  }
+
   const handleNameChange = (event) => {
     setName(event.target.value)
   }
@@ -25,7 +31,7 @@ const TaskForms = ({ user, setTasks, project }) => {
     const taskObject = {
       taskName: name,
       taskDescription: description,
-      status: +status,
+      status: statusMap[status],
       dueDate,
       projectID: project.projectID,
       userID: user.user.userID,
@@ -50,7 +56,15 @@ const TaskForms = ({ user, setTasks, project }) => {
           <p>name: < input value={name}  name='name' required onChange={handleNameChange} /> </p>
           <p>description: <input value={description} name='description' onChange={handleDescriptionChange}/> </p>
           <p>dueDate: <input type='date' value={dueDate} name='startDate' required onChange={handleDueDateChange} /> </p>
-          <p>status: <input type='number' min="0" max="2" value={status} name='endDate' required onChange={handleStatusChange} /></p>
+          <p>
+            status:{' '}
+            <select value={status} onChange={handleStatusChange} required>
+              <option value=''>Select Status</option>
+              <option value='Started'>Started</option>
+              <option value='Done'>Done</option>
+              <option value='Cancelled'>Cancelled</option>
+            </select>
+          </p>
           <button type="submit">add task</button> 
         </form>
         
