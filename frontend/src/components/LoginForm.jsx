@@ -70,18 +70,20 @@ const loginForm = ({ successMessage, failureMessage, setUser}) => {
         <h1>{isRegistering ? 'Register' : 'Login'} to Application</h1>
         <form onSubmit={isRegistering ? handleRegister : handleLogin}>
           <div>
-            <label>Username:</label>
+            <label htmlFor="username">Username:</label>
             <input
               type="text" required minLength="3" 
+              id="username"
               maxLength="35"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
-            <label>Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
               type="password" required minLength="3" 
+              id="password"
               maxLength="35"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
