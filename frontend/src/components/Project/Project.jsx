@@ -95,11 +95,12 @@ const Project = ({ project, setProjects }) => {
           <button onClick={handleCancel}>Cancel</button>
         </div>
       ) : (
+
         <div >
           <h1> {project.projectName}</h1>
           <h5> {project.projectDescription} </h5>
-          <p>Start Date: {formatDate(project.startDate)}</p>
-          <p>End Date: {formatDate(project.endDate)}</p>
+          <p>Start Date: {new Date(project.startDate).toLocaleDateString('en-FI')}</p>
+          <p>End Date: {new Date(project.endDate).toLocaleDateString('en-FI')}</p>
           <button onClick={handleEdit}>Edit Project</button>  
           <button onClick={removeProject}  >Delete Project</button>
         </div>

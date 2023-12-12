@@ -10,7 +10,7 @@ const Task = ({ task, setTasks }) => {
   const formatDate = (dateString) => {
     if (dateString === "" || dateString === null)
       return false
-
+    console.log(dateString)
     const date = new Date(dateString)
     const formattedDate = date.toISOString().split('T')[0];
     return formattedDate
@@ -116,7 +116,7 @@ const Task = ({ task, setTasks }) => {
             <h5>{task.taskDescription}</h5>
             {
             <div className="task-details">
-              <p>Due Date: {formatDate(task.dueDate)}</p>
+              <p>Due Date: {new Date(task.dueDate).toLocaleDateString('en-FI')}</p>
               <p className="task-status" data-status={task.status} key={task.taskID}>
                 {task.status === 0 ? 'Started' : task.status === 1 ? 'Done' : 'Cancelled'} 
                 <span role="img" aria-label="status-emoji" style={statusSymbolStyle}>
