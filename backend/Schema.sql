@@ -26,6 +26,6 @@ CREATE TABLE Tasks(
 	UserID INT,
 	Status varchar(10),
 	PRIMARY KEY (TaskID),
-	FOREIGN KEY (UserID) REFERENCES Users(UserID) 
+	FOREIGN KEY (UserID) REFERENCES Users(UserID), 
 	FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID) ON DELETE CASCADE
 )
