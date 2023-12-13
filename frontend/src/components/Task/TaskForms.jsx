@@ -36,7 +36,7 @@ const TaskForms = ({ user, setTasks, project }) => {
       projectID: project.projectID,
       userID: user.user.userID,
     }
-    console.log(taskObject, "taskobject")
+    //console.log(taskObject, "taskobject")
     await taskService.create(taskObject)
     const updatedTasks = await taskService.getAll()
     setTasks(updatedTasks)

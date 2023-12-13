@@ -18,7 +18,7 @@ function App() {
     )
     setTimeout(() => {
       setErrorMessage({ message: null })
-    }, 5000)
+    }, 3000)
   }
 
   const failureMessage = (value) => {
@@ -27,7 +27,7 @@ function App() {
     )
     setTimeout(() => {
       setErrorMessage({ message: null })
-    }, 5000)
+    }, 3000)
   }
   const projectFormRef = useRef()
 

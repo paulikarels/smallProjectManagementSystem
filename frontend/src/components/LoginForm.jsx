@@ -52,10 +52,12 @@ const loginForm = ({ successMessage, failureMessage, setUser}) => {
         failureMessage('User already exists or incorrect credentials')
         return
       } 
+      successMessage(`Register successful`)
       setUsername('')
       setPassword('')
       setIsRegistering(false)
     } catch (ex) {
+      failureMessage('User already exists or incorrect credentials')
       console.log(ex)
     }
   }

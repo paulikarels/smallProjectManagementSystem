@@ -58,7 +58,7 @@ const Task = ({ task, setTasks }) => {
       setTasks(updatedData)
       setEditable(false)
     } catch (error) {
-      // Handle error if the update fails
+      
     }
   }
   return (
@@ -97,14 +97,14 @@ const Task = ({ task, setTasks }) => {
           </div>
           <div>
             <label >Status:</label>
-            <select name="status" value={editedTask.status} onChange={handleInputChange} required>
+            <select name="status" value={(editedTask.status)} onChange={handleInputChange} required>
                 <option value="">Select Status</option>
                 {statusOptions.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
                   </option>
                 ))}
-              </select>
+            </select>
           </div>
             <button onClick={handleUpdateTask}>Save</button>
             <button onClick={handleCancel}>Cancel</button>
